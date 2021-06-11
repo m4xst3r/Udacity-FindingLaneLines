@@ -16,6 +16,8 @@ The goals / steps of this project are the following:
 [image1]: ./test_images_output/solidWhiteCurve_gray.jpg "Grayscale"
 [image2]: ./test_images_output/solidWhiteCurve_gaus.jpg "Canny"
 [image3]: ./test_images_output/solidWhiteCurve_gaus_corpped.jpg "Cropped"
+[image4]: ./test_images_output/solidWhiteCurve_hough.jpg "Hough"
+[image5]: ./test_images_output/solidWhiteRight_fin.jpg "Final"
 
 
 ---
@@ -30,10 +32,22 @@ then I defined a vertices to adjust my region of interest using the image.shape 
 ![alt text][image2]
 To make it easier to determine the values for canny and the gaussian blur I cropped the image to reduce the area of interest. Using a for loop i than iterated over mutliples of the default values an observed the outputs to avaluate the pest values. Resulting in the following image:
 ![alt text][image3]
+With the right values adjuste on canny and gauss algroithm I than use the hough function first with default values. To adjust the values  I followed a similar approach as befor and used a for loop. One by one I ajusted the faules evaluataing them after each iteration till I was convinced that the outcome is good enough like in the picture below.
+![alt text][image4]
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by first sorting the lines to right and left sight using their gradient 
+```markdown
+delta = (y2-y1)/(x2-x1)
+```
+depending on their side the lines were appended to a list. Using a new function than each list of lines is used to calculate on single line. This seperate  funnctioncalculate_avg_line() calculates first the averagr of x1, y1 , x2 and y2 using all the lines as an input. To erase some noise only the lines left or right from the middle of the image are used. With the average x and y values I calculated their gradient and the centre between the points. The final line is than calculated by substracting the end points of the region of interset with the centre and deviding the difference with the gradient. With the ratio the final point of the line are caclulated using this formula:
+```markdown
+ point1 = (int(centre_x + (delta_x * factor_bottom)), int(centre_y + (delta_y * factor_bottom)))
+ point2 = (int(centre_x+(delta_x * factor_top)), int(centre_y +(delta_y * factor_top)))
+```
+I tested than the algorithm on the sample picutres and was pleased with the performance:
+![alt text][image4]
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+To finish off the project I copy pasted the algorithm in the process_image() function and let it run over the video. In general the result looks good to me even though the perfomance could be a bit better
 
 
 
