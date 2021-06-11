@@ -45,7 +45,7 @@ depending on their side the lines were appended to a list. Using a new function 
  point2 = (int(centre_x+(delta_x * factor_top)), int(centre_y +(delta_y * factor_top)))
 ```
 I tested than the algorithm on the sample picutres and was pleased with the performance:
-![alt text][image4]
+![alt text][image5]
 
 To finish off the project I copy pasted the algorithm in the process_image() function and let it run over the video. In general the result looks good to me even though the perfomance could be a bit better
 
@@ -53,14 +53,19 @@ To finish off the project I copy pasted the algorithm in the process_image() fun
 
 ### 2. Identify potential shortcomings with your current pipeline
 
+The most obvious shortcoming is that the lines are not that stable they are jumping an flickering.
 
-One potential shortcoming would be what would happen when ... 
+Another shortcoming could be that curves are not very well visualized.
 
-Another shortcoming could be ...
+If the lines are not seperated good enough this could lead to wrong calculations and therefor not detecting the correct lines.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+To improve the flickering the algorithm needs to be more stable for instance taking the last position of the line also into the computation.
+
+Also it  would be better to not only use the gradient of the lines to sperate them between right and left.
+
+Another improvement would be to not only extracct lines and gather more information from picture.
 
 Another potential improvement could be to ...
