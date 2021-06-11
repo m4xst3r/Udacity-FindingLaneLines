@@ -66,6 +66,4 @@ To improve the flickering the algorithm needs to be more stable for instance tak
 
 Also it  would be better to not only use the gradient of the lines to sperate them between right and left.
 
-Another improvement would be to not only extracct lines and gather more information from picture.
-
-Another potential improvement could be to ...
+Another improvement would be to not only extract lines and gather more information from picture.
